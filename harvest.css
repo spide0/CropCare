@@ -1,0 +1,198 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    background-color: #00ff8c;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: #fff !important;
+    font-weight: bold;
+  }
+  
+  .nav-link {
+    color: #d8f3dc !important;
+  }
+  
+  .nav-link:hover {
+    color: #95d5b2 !important;
+  }
+  
+  /* Carousel Styling */
+  .carousel-inner img {
+    height: 450px;
+    object-fit: cover;
+  }
+  
+  .carousel-indicators li {
+    background-color: #2d6a4f;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(100%);
+  }
+  
+  /* Jumbotron Styling */
+  .jumbotron {
+    background: linear-gradient(to right, #7395d4, #adc178);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  
+  .jumbotron h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .jumbotron a {
+    background-color: #2d406a;
+    border-color: #2d6a4f;
+  }
+  
+  .jumbotron a:hover {
+    background-color: #40916c;
+    border-color: #40916c;
+  }
+  
+  /* Card Deck Styling */
+  .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(58, 48, 48, 0);
+  }
+  
+  .card img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    color: #ff0000;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #495057;
+  }
+  
+  .card-text small {
+    color: #868e96;
+  }
+  
+  /* Section Header Styling */
+  .card-header {
+    background-color: #2d6a4f;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Button Styling */
+  .btn-primary {
+    background-color: #2d6a4f;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #40916c;
+  }
+  
+  /* Container Spacing */
+  .container {
+    margin-top: 30px;
+  }
+  
+  /* Footer (Optional) */
+  footer {
+    background-color: #2d6a4f;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  h1, h3 {
+    text-align: center;
+    color: #555;
+  }
+  section {
+    margin: 20px 0;
+  }
+  /* Card styling */
+  .card {
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 20px;
+  }
+  .card h4 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #444;
+  }
+  /* Chart containers */
+  .chart-container {
+    display: flex;
+    justify-content: center;
+  }
+  canvas {
+    
+    max-width: 70%;
+    max-height: 70%;
+  }
+  .chart-container canvas {
+    max-width: 10px; /* Limit chart size */
+  }
+
+  .carousel-inner img {
+    margin: auto;
+  }
+  
+  .chart {
+    margin: 200px auto;
+    width: 1000px;
+    height: 500px;
+    background-color: #008080; 
+    border-radius: 15px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border: 2px solid #ddd; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+  }
+  
+  .chart:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 8px 30px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+  }
+
+  
