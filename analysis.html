@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-Harvest Loss Analysis Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Post-Harvest Loss Analysis Dashboard</h1>
+    <p>Track, analyze, and contribute to minimizing post-harvest losses.</p>
+    
+  </header>
+
+  <main>
+    <!-- Analysis Section -->
+    <section id="analysis" class="analysis-section">
+      <h2>Analysis of Loss Causes</h2>
+      <ul>
+        <li><strong>Physical Damage:</strong> Caused during harvesting, handling, or transportation.</li>
+        <li><strong>Spoilage:</strong> Due to poor storage conditions or delays.</li>
+        <li><strong>Pests and Rodents:</strong> Infestation during storage.</li>
+        <li><strong>Moisture Loss:</strong> Inadequate drying or storage practices.</li>
+        <li><strong>Processing Loss:</strong> Inefficiencies in the processing stage.</li>
+      </ul>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+      <h2>Upload Your Report</h2>
+      <form action="#" method="POST" enctype="multipart/form-data">
+        <label for="reportTitle">Report Title:</label>
+        <input type="text" id="reportTitle" name="reportTitle" required>
+        <label for="reportFile">Choose a file:</label>
+        <input type="file" id="reportFile" name="reportFile" required>
+        <button type="submit">Upload</button>
+      </form>
+    </section>
+
+    <!-- Charts Section -->
+    <section id="charts" class="charts-section">
+      <h2>Charts & Visuals</h2>
+      <div class="chart-image">
+        <img src="Picture3.png" alt="Chart 1 - Post-Harvest Loss Overview">
+        <p>Post-Harvest Loss by Phases</p>
+      </div>
+      <div class="chart-image">
+        <img src="chart2.png" alt="Chart 2 - Loss Distribution">
+        <p>Distribution of Loss Causes</p>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="statistics-section">
+      <h2>Statistics</h2>
+      <p>Monthly Loss Percentage:</p>
+      <img src="monthly_loss_chart.png" alt="Monthly Loss Percentage" class="stats-image">
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+      <h2>Write and View Reviews</h2>
+      <form id="reviewForm">
+        <textarea id="reviewText" placeholder="Write your review here..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="reviews-list">
+        <h3>Recent Reviews:</h3>
+        <ul id="reviewList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Post-Harvest Loss Analysis Dashboard. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
