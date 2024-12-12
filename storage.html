@@ -1,266 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storage Loss Reduction</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        /* Reset and base styles */
-        body {
-            margin: 0;
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(to bottom, #141414, #101010);
-        }
-
-        /* Navigation bar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to right, #4e5052, #01214c);
-            color: white;
-            padding: 10px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar a:hover {
-            text-decoration: underline;
-        }
-
-        .navbar .logout {
-            padding: 8px 15px;
-            border: 2px solid white;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.3);
-        }
-
-        .navbar .logout:hover {
-            background-color: #0d47a1;
-        }
-
-        /* Page title */
-        h1 {
-            text-align: center;
-            color: white;
-            font-size: 36px;
-            margin: 20px 0 30px;
-            text-shadow: 2px 2px 8px rgba(103, 102, 102, 0.3);
-        }
-
-        /* Container styles */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .content-box {
-            width: 80%;
-            max-width: 800px;
-            background: linear-gradient(to bottom, #696868, #bfbebe);
-            border-radius: 15px;
-            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), -8px -8px 15px rgba(255, 255, 255, 0.5);
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 2px solid #1565c0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .content-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.4), -12px -12px 20px rgba(255, 255, 255, 0.6);
-        }
-
-        .content-box h2 {
-            background: linear-gradient(to right, #000000, #414141);
-            color: white;
-            margin: 0;
-            padding: 15px;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .content-box ul {
-            padding: 20px;
-            list-style-type: disc;
-        }
-
-        .content-box ul li {
-            margin-bottom: 10px;
-            animation: fadeIn 0.6s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Chart container */
-        .chart-container {
-            width: 80%;
-            max-width: 800px;
-            margin: 30px auto;
-            background: rgb(0, 0, 0);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), -8px -8px 15px rgba(255, 255, 255, 0.5);
-            border: 2px solid #1565c0;
-        }
-
-        .chart-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1565c0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Tables and Charts</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    canvas {
+      margin-bottom: 40px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation bar -->
-    <div class="navbar">
-        <a href="dashboard.html">🏠 Home</a>
-        <a href="login.html" class="logout">Logout</a>
-    </div>
+  <h1>Table 1</h1>
+  <table id="table1">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Storage Loss (%)</th>
+        <th>Storage Loss ($M)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">2020</td>
+        <td contenteditable="true">5</td>
+        <td contenteditable="true">50</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">2021</td>
+        <td contenteditable="true">6</td>
+        <td contenteditable="true">60</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- Page title -->
-    <h1>Storage Loss Reduction</h1>
+  <h2>Chart 1: Storage Loss</h2>
+  <canvas id="chart1" width="400" height="200"></canvas>
 
-    <!-- Main content -->
-    <div class="container">
-        <div class="content-box">
-            <h2>Storage Loss</h2>
-            <ul>
-                <li>Storage loss refers to the reduction in quantity and quality of harvested agricultural products during storage.</li>
-                <li>These losses can occur due to improper storage conditions, pest infestations, and environmental factors like moisture and temperature variations.</li>
-                <li>They impact food security, farmer income, and market availability.</li>
-                <li>Effective management involves measures like controlled storage, pest-proof facilities, and proper drying techniques.</li>
-            </ul>
-        </div>
-        <div class="content-box">
-            <h2>Challenges</h2>
-            <ul>
-                <li>Moisture Content: High moisture levels can lead to spoilage, mold growth, and reduced shelf life of stored products.</li>
-                <li>Temperature Fluctuations: Inconsistent temperatures can accelerate spoilage and pest infestations.</li>
-                <li>Pest Infestation: Rodents, insects, and other pests can cause significant damage to stored goods.</li>
-                <li>Fungal and Microbial Growth: Poor ventilation and damp conditions promote mold and bacterial growth, contaminating the produce.</li>
-                <li>Storage Infrastructure: Lack of proper storage facilities, such as cold storage or hermetic bins, leads to suboptimal preservation.</li>
-                <li>Post-Harvest Handling: Improper handling before storage increases the risk of spoilage.</li>
-                <li>Chemical Degradation: Natural processes like oxidation can deteriorate the quality of stored produce.</li>
-                <li>Economic Constraints: Limited resources prevent access to advanced storage technology or regular maintenance.</li>
-                <li>Poor Management Practices: Inefficient inventory management can lead to over-storage or product waste.</li>
-                <li>Supply Chain Delays: Extended storage periods increase the risk of losses.</li>
-            </ul>
-        </div>
-        <div class="content-box">
-            <h2>Solutions</h2>
-            <ul>
-                <li>Moisture Control: Dry produce to recommended levels and use moisture-proof storage.</li>
-                <li>Temperature Regulation: Implement climate-controlled facilities for sensitive products.</li>
-                <li>Pest Management: Seal storage units and employ pest control measures.</li>
-                <li>Fungal and Microbial Control: Ensure proper ventilation and treat products with antifungal agents.</li>
-                <li>Improved Infrastructure: Invest in modern storage technologies and promote affordable solutions.</li>
-                <li>Post-Harvest Best Practices: Educate farmers on proper techniques like cleaning and drying.</li>
-                <li>Chemical Preservation: Use inert gases or coatings to delay oxidation.</li>
-                <li>Financial Support: Provide credit schemes for access to advanced storage technologies.</li>
-                <li>Inventory Systems: Use digital tools for tracking and monitoring quality.</li>
-                <li>Streamlined Supply Chains: Improve market connectivity and transportation to reduce delays.</li>
-            </ul>
-        </div>
+  <h1>Table 2</h1>
+  <table id="table2">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Total Harvest</th>
+        <th>Usable</th>
+        <th>Storage Loss</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">2020</td>
+        <td contenteditable="true">1000</td>
+        <td contenteditable="true">800</td>
+        <td contenteditable="true">200</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">2021</td>
+        <td contenteditable="true">1200</td>
+        <td contenteditable="true">900</td>
+        <td contenteditable="true">300</td>
+      </tr>
+    </tbody>
+  </table>
 
-        <!-- Charts Section -->
-        <div class="chart-container">
-            <canvas id="chart1"></canvas>
-        </div>
-        <div class="chart-container">
-            <canvas id="chart2"></canvas>
-        </div>
-    </div>
+  <h2>Chart 2: Harvest Data</h2>
+  <canvas id="chart2" width="400" height="200"></canvas>
 
-    <!-- Chart.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Interactive Chart 1: Storage Loss Trend
-        const ctx1 = document.getElementById('chart1').getContext('2d');
-        new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: ['2020', '2021', '2022', '2023', '2024'],
-                datasets: [{
-                    label: 'Storage Loss (%)',
-                    data: [20, 14, 13, 11, 9],
-                    borderColor: '#ff6384',
-                    borderWidth: 3,
-                    fill: false,
-                    tension: 0.3,
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: true }
-                },
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
+  <script>
+    // Chart 1: Display both "Storage Loss (%)" and "Storage Loss ($M)"
+    const ctx1 = document.getElementById('chart1').getContext('2d');
+    const chart1 = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Storage Loss (%)',
+            data: [],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            fill: false,
+          },
+          {
+            label: 'Storage Loss ($M)',
+            data: [],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 2,
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+      },
+    });
+
+    // Chart 2: Display "Total Harvest," "Usable," and "Storage Loss" as separate datasets
+    const ctx2 = document.getElementById('chart2').getContext('2d');
+    const chart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Total Harvest',
+            data: [],
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+          },
+          {
+            label: 'Usable',
+            data: [],
+            backgroundColor: 'rgba(255, 205, 86, 0.5)',
+            borderColor: 'rgba(255, 205, 86, 1)',
+            borderWidth: 1,
+          },
+          {
+            label: 'Storage Loss',
+            data: [],
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+      },
+    });
+
+    // Update Chart 1 data from Table 1
+    function updateChart1FromTable() {
+      const table = document.getElementById('table1');
+      const rows = table.rows;
+      const labels = [];
+      const percentageData = [];
+      const dollarData = [];
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].cells;
+        labels.push(cells[0].textContent); // Year
+        percentageData.push(parseFloat(cells[1].textContent) || 0); // Storage Loss (%)
+        dollarData.push(parseFloat(cells[2].textContent) || 0); // Storage Loss ($M)
+      }
+
+      chart1.data.labels = labels;
+      chart1.data.datasets[0].data = percentageData;
+      chart1.data.datasets[1].data = dollarData;
+      chart1.update();
+    }
+
+    // Update Chart 2 data from Table 2
+    function updateChart2FromTable() {
+      const table = document.getElementById('table2');
+      const rows = table.rows;
+      const labels = [];
+      const totalHarvestData = [];
+      const usableData = [];
+      const storageLossData = [];
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].cells;
+        labels.push(cells[0].textContent); // Year
+        totalHarvestData.push(parseFloat(cells[1].textContent) || 0); // Total Harvest
+        usableData.push(parseFloat(cells[2].textContent) || 0); // Usable
+        storageLossData.push(parseFloat(cells[3].textContent) || 0); // Storage Loss
+      }
+
+      chart2.data.labels = labels;
+      chart2.data.datasets[0].data = totalHarvestData;
+      chart2.data.datasets[1].data = usableData;
+      chart2.data.datasets[2].data = storageLossData;
+      chart2.update();
+    }
+
+    // Update both charts
+    function updateCharts() {
+      updateChart1FromTable();
+      updateChart2FromTable();
+    }
+
+    // Save data to local storage
+    function saveToLocalStorage() {
+      const table1Data = getTableData('table1');
+      const table2Data = getTableData('table2');
+      localStorage.setItem('table1Data', JSON.stringify(table1Data));
+      localStorage.setItem('table2Data', JSON.stringify(table2Data));
+    }
+
+    // Load data from local storage
+    function loadFromLocalStorage() {
+      const table1Data = JSON.parse(localStorage.getItem('table1Data')) || [];
+      const table2Data = JSON.parse(localStorage.getItem('table2Data')) || [];
+      return { table1Data, table2Data };
+    }
+
+    // Get data from table
+    function getTableData(tableId) {
+      const table = document.getElementById(tableId);
+      const rows = table.rows;
+      const data = [];
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].cells;
+        const row = [];
+        for (let j = 0; j < cells.length; j++) {
+          row.push(cells[j].textContent);
+        }
+        data.push(row);
+      }
+
+      return data;
+    }
+
+    // Render table from data
+    function renderTable(tableId, data) {
+      const table = document.getElementById(tableId);
+      const tbody = table.querySelector('tbody');
+      tbody.innerHTML = '';
+
+      data.forEach(row => {
+        const tr = document.createElement('tr');
+        row.forEach(cell => {
+          const td = document.createElement('td');
+          td.contentEditable = true;
+          td.textContent = cell;
+          tr.appendChild(td);
         });
+        tbody.appendChild(tr);
+      });
+    }
 
-        // Interactive Chart 2: Overall Storage Chart
-        const ctx2 = document.getElementById('chart2').getContext('2d');
-        new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['2020', '2021', '2022', '2023', '2024'],
-                datasets: [
-                    {
-                        label: 'Total Harvest',
-                        data: [200, 190, 180, 170, 160],
-                        backgroundColor: '#36a2eb',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Usable',
-                        data: [180, 176, 167, 159, 151],
-                        backgroundColor: '#4bc0c0',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Storage Loss',
-                        data: [20, 14, 13, 11, 9],
-                        backgroundColor: '#ff6384',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: true }
-                },
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-    </script>
+    // Event listeners for updating charts and saving data
+    document.addEventListener('input', (event) => {
+      if (event.target.closest('table')) {
+        updateCharts();
+        saveToLocalStorage();
+      }
+    });
+
+    // Render tables and update charts on page load
+    const { table1Data, table2Data } = loadFromLocalStorage();
+    renderTable('table1', table1Data);
+    renderTable('table2', table2Data);
+    updateCharts();
+  </script>
 </body>
 </html>
