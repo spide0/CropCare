@@ -1,8 +1,3 @@
-<?php
-      include("./utils/dbconnection.php");
-
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,14 +14,6 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   
   <link rel="stylesheet" href="harvest.css">
-
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harvest Loss Table</title>
-
-
   
   <title>All About Harvest Loss</title>
   <style>
@@ -147,25 +134,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-<?php
-    include("./utils/table.php");
-
-?>
-
-
-
-
-
-
-
-
-
 
 <div id="Impact" class="container">
   <div class="card">
